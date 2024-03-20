@@ -76,7 +76,7 @@ class _HomePageWidgetState extends State<MainWidget> {
                     child: Align(
                       alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Text(
-                        'To unlock TASK_NUMBER\nYou will have to find the QR code!',
+                        'To unlock the task:\nYou will have to find the QR code!',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
