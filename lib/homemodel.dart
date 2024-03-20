@@ -1,8 +1,8 @@
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
-import 'main.dart' show HomePageWidget;
+import 'main.dart' show MainWidget;
 
-class MainModel extends FlutterFlowModel<HomePageWidget> {
+class MainModel extends FlutterFlowModel<MainWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

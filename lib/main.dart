@@ -4,14 +4,18 @@ import 'package:flutter/material.dart';
 import 'homemodel.dart';
 export 'main.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
-
-  @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+void main() {
+  runApp(const MaterialApp(home: MainWidget()));
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class MainWidget extends StatefulWidget {
+  const MainWidget({super.key});
+
+  @override
+  State<MainWidget> createState() => _HomePageWidgetState();
+}
+
+class _HomePageWidgetState extends State<MainWidget> {
   late MainModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -49,7 +53,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -69,7 +73,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         'To unlock TASK_NUMBER\nYou will have to find the QR code!',
                         textAlign: TextAlign.center,
@@ -85,16 +89,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 10.0, 0.0, 0.0),
                       child: Text(
                         'Here\'s a hint:',
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 5.0, 0.0, 0.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.network(
@@ -106,16 +110,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 5.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () {
@@ -124,10 +128,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 text: 'Scan QR',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding:
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
@@ -136,7 +141,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         color: Colors.white,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -151,10 +156,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               text: 'Help!',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding:
+                                    const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
@@ -163,7 +169,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       color: Colors.white,
                                     ),
                                 elevation: 3.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
