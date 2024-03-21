@@ -2,11 +2,13 @@
   {
     "id": 1,
     "done": false,
-    "task": "ID:1, High weight task (EASY)"
+    "task": "ID:1, High weight task (EASY)",
+    "hint": "The QR code is on the snack table."
   },
   {
     "id": 2,
     "done": false,
-    "task": "ID:2, Low weight task (HARD)"
+    "task": "ID:2, Low weight task (HARD)",
+    "hint": "The QR code is behind the monitor."
   }
 ]

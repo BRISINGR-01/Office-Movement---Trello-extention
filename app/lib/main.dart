@@ -2,6 +2,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:run_2_future_project/task.dart';
 
 import 'homemodel.dart';
 export 'main.dart';
@@ -278,23 +279,7 @@ class _HomePageWidgetState extends State<MainWidget> {
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Hint'),
-                                      content: Text(
-                                          'The QR code is on the snack table.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Gotcha.'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
+                                _model.fetchHint(_model.selectedTask, context);
                               },
                               text: 'Help!',
                               options: FFButtonOptions(
