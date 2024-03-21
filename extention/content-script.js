@@ -29,7 +29,7 @@ function check() {
     image.src = serverIP + "/img";
     image.id = "image";*/
 
-    const i = setInterval(() => {
+    window.addEventListener("load", function () {
       const container = [
         ...document.getElementsByClassName("window-module"),
       ].find((el) => el.className === "window-module");
@@ -40,7 +40,7 @@ function check() {
       const title = document.querySelectorAll(".mod-card-back-title")[0];
       title.id = "title";
       title.value = el.innerText;
-    }, 100);
+    });
   }
 }
 

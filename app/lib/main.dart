@@ -327,7 +327,7 @@ class _HomePageWidgetState extends State<MainWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
-                          _model.lockTask(_model.qrResult);
+                          _model.lockTask(_model.selectedTask.toString());
                           setState(() {});
                         },
                         text: 'LOCK',
