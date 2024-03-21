@@ -7,6 +7,8 @@ window.addEventListener("load", () => {
 const serverIP = "http://localhost:3000";
 const subscription = new EventSource(serverIP + "/subscribe");
 
+let printedIDS = [1, 2];
+
 subscription.addEventListener("message", (e) => {
   unhide(e.data);
 });
@@ -48,30 +50,34 @@ function shouldDisplayMap() {
     hiddenTasks.find(([el, p]) => el.href === window.location.href)
   );
 }
-let oldname = "";
+let oldnames = [];
 function hideRandomTask() {
   allTasks = [...document.querySelectorAll("a[data-testid=card-name")].filter(
     (el) => !el.dataset.id
   );
 
-  const el = allTasks[0];
-  oldname = el.innerText;
-  fetch(`${serverIP}/data?id=1`)
-    .then((res) => res.json())
-    .then((res) => {
-      console.log(res);
-      if (!res.done) {
-        el.dataset.hiddenName = el.innerText;
-        el.innerText = res.task;
-        el.dataset.taskId = res.id;
-        el.style.transition = "all 1s ease-in-out";
+  printedIDS.forEach((id) => {
+    const el = allTasks[id];
 
-        const p = el.parentNode.parentNode;
-        p.style.transition = "all 1s ease-in-out";
-        hiddenTasks.push([el, p]);
-        setRandomGradient([el, p]);
-      }
-    });
+    oldnames[id] = el.innerText;
+
+    fetch(`${serverIP}/data?id=${id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (!res.done) {
+          el.dataset.hiddenName = el.innerText;
+          el.innerText = res.task;
+          el.dataset.taskId = res.id;
+          el.style.transition = "all 1s ease-in-out";
+
+          const p = el.parentNode.parentNode;
+          p.style.transition = "all 1s ease-in-out";
+          hiddenTasks.push([el, p]);
+          setRandomGradient([el, p]);
+        }
+      });
+  });
 }
 
 function getRandomColor() {
@@ -93,7 +99,7 @@ function unhide(id) {
       if (found) {
         p.style.background = "#22272b";
         el.style.color = "#b6c2cf";
-        allTasks[0].innerText = oldname;
+        if (oldnames[id]) allTasks[id].innerText = oldname[id];
 
         if (shouldDisplayMap()) {
           document.getElementById("image").remove();

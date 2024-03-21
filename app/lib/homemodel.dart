@@ -9,14 +9,15 @@ class MainModel extends FlutterFlowModel<MainWidget> {
   final unfocusNode = FocusNode();
 
   // State field(s) for TextField widget.
-  final image = Image(
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  var URL = 'http://localhost:3000';
+  var image = Image(
       image: AssetImage('assets/snacktafel.png'),
       height: 400,
       width: 300,
       fit: BoxFit.cover);
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  var URL = 'http://localhost:3000';
+  var selectedTask = 1;
   var qrResult = '1';
 
   /// Initialization and disposal methods.

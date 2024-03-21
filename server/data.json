@@ -1,7 +1,12 @@
 [
   {
     "id": 1,
-    "done": true,
-    "task": "Unlock the task with your app!"
+    "done": false,
+    "task": "ID:1, High weight task (EASY)"
+  },
+  {
+    "id": 2,
+    "done": false,
+    "task": "ID:2, Low weight task (HARD)"
   }
 ]

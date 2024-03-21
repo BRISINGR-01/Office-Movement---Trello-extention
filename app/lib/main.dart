@@ -73,11 +73,18 @@ class _HomePageWidgetState extends State<MainWidget> {
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
-                    onChanged: (input) => EasyDebounce.debounce(
+                    onFieldSubmitted: (input) => EasyDebounce.debounce(
                       '_model.textController',
                       Duration(milliseconds: 2000),
                       () async {
                         _model.URL = 'http://' + input + ":3000";
+                        _model.image = Image.network(
+                            _model.URL +
+                                '/img/?id=' +
+                                _model.selectedTask.toString(),
+                            height: 400,
+                            width: 300,
+                            fit: BoxFit.cover);
                         setState(() {});
                       },
                     ),
@@ -85,6 +92,68 @@ class _HomePageWidgetState extends State<MainWidget> {
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: 'IP',
+                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      errorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedErrorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  child: TextFormField(
+                    controller: _model.textController,
+                    focusNode: _model.textFieldFocusNode,
+                    onFieldSubmitted: (input) => EasyDebounce.debounce(
+                      '_model.textController',
+                      Duration(milliseconds: 2000),
+                      () async {
+                        _model.selectedTask = int.parse(input);
+                        _model.image = Image.network(
+                            _model.URL +
+                                '/img/?id=' +
+                                _model.selectedTask.toString(),
+                            height: 400,
+                            width: 300,
+                            fit: BoxFit.cover);
+                        setState(() {});
+                      },
+                    ),
+                    autofocus: true,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'TaskID',
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
                       hintStyle: FlutterFlowTheme.of(context).labelMedium,
                       enabledBorder: UnderlineInputBorder(

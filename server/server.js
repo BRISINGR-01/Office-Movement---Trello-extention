@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/img", (req, res) => {
-  const filePath = path.join(__dirname, "image-20240321-101624-5f538e2c.jpeg");
+  const filePath = path.join(__dirname, req.query.id + ".jpeg");
   fs.readFile(filePath, (err, data) => {
     if (err) {
       console.error("Error reading file:", err);
@@ -43,14 +43,7 @@ function writeData(data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
 }
 
-let tasks = [
-  "Go to red ball",
-  "Go to blue ball",
-  "Go to green ball",
-  "Walk 5 meters",
-  "Walk 10 meters",
-  "Walk 20 meters",
-];
+let tasks = ["High weight task (EASY)", "Low weight task (HARD)"];
 
 let randomTask = tasks[Math.floor(Math.random() * tasks.length)];
 
