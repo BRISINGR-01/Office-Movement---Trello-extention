@@ -25,9 +25,9 @@ function check() {
     const el = hiddenTasks.find(
       ([el, p]) => el.href === window.location.href
     )[0];
-    const image = document.createElement("img");
+    /*const image = document.createElement("img");
     image.src = serverIP + "/img";
-    image.id = "image";
+    image.id = "image";*/
 
     const i = setInterval(() => {
       const container = [
@@ -36,7 +36,7 @@ function check() {
       if (!container) return;
 
       clearInterval(i);
-      container.appendChild(image);
+      //container.appendChild(image);
       const title = document.querySelectorAll(".mod-card-back-title")[0];
       title.id = "title";
       title.value = el.innerText;
@@ -99,7 +99,7 @@ function unhide(id) {
       if (found) {
         p.style.background = "#22272b";
         el.style.color = "#b6c2cf";
-        if (oldnames[id]) allTasks[id].innerText = oldname[id];
+        if (oldnames[id]) allTasks[id].innerText = oldnames[id];
 
         if (shouldDisplayMap()) {
           document.getElementById("image").remove();

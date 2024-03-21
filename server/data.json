@@ -6,7 +6,7 @@
   },
   {
     "id": 2,
-    "done": false,
+    "done": true,
     "task": "ID:2, Low weight task (HARD)"
   }
 ]
