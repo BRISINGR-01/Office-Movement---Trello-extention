@@ -84,8 +84,8 @@ class _HomePageWidgetState extends State<MainWidget> {
                                 '/img/?id=' +
                                 _model.selectedTask.toString(),
                             height: 400,
-                            width: 300,
-                            fit: BoxFit.cover);
+                            width: 600,
+                            fit: BoxFit.scaleDown);
                         setState(() {});
                       },
                     ),
@@ -146,8 +146,8 @@ class _HomePageWidgetState extends State<MainWidget> {
                                 '/img/?id=' +
                                 _model.selectedTask.toString(),
                             height: 400,
-                            width: 300,
-                            fit: BoxFit.cover);
+                            width: 600,
+                            fit: BoxFit.scaleDown);
                         setState(() {});
                       },
                     ),

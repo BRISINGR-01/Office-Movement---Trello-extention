@@ -17,8 +17,8 @@ class MainModel extends FlutterFlowModel<MainWidget> {
   var image = Image(
       image: AssetImage('assets/snacktafel.png'),
       height: 400,
-      width: 300,
-      fit: BoxFit.cover);
+      width: 600,
+      fit: BoxFit.scaleDown);
   var selectedTask = 1;
   var qrResult = '1';
   var hinttext = 'No hint available.';
