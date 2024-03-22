@@ -107,8 +107,9 @@ function unhide(id) {
           title.value = el.innerText = el.dataset.hiddenName;
         }
       }
+      return found;
     }),
-    1
+    id
   );
 }
 
