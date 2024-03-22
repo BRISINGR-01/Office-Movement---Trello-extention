@@ -10,10 +10,12 @@ const subscription = new EventSource(serverIP + "/subscribe");
 let printedIDS = [1, 2];
 
 subscription.addEventListener("message", (e) => {
-  unhide(e.data);
+  var parsed = JSON.parse(e.data);
+  if (parsed.done) unhide(parsed.id);
+  else hideRandomTask();
 });
 
-window.navigation.addEventListener("navigate", () => setTimeout(check, 100));
+window.navigation.addEventListener("navigate", () => check);
 
 const doneTasks = [];
 const hiddenTasks = [];
@@ -35,7 +37,7 @@ function check() {
       ].find((el) => el.className === "window-module");
       if (!container) return;
 
-      clearInterval(i);
+      //clearInterval(i);
       //container.appendChild(image);
       const title = document.querySelectorAll(".mod-card-back-title")[0];
       title.id = "title";

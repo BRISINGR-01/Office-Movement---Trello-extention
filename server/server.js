@@ -72,7 +72,7 @@ app.post("/data", (req, res) => {
 
   if (item) {
     item.done = true;
-    eventDispatcher.dispatch(id);
+    eventDispatcher.dispatch(JSON.stringify(item));
     writeData(data);
     res.send(item);
   } else {
@@ -87,6 +87,7 @@ app.post("/lock/", (req, res) => {
 
   if (item) {
     item.done = false;
+    eventDispatcher.dispatch(JSON.stringify(item));
     writeData(data);
     res.send(item);
   } else {
