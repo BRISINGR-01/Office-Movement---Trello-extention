@@ -1,3 +1,19 @@
-# run_2_future_project
+# Run 2 Future
 
-A new Flutter project.
+As a team, we've developed an innovative product that not only enhances our productivity but also promotes our health and well-being 🚶‍♂️💼. This is our solution for the International Week 2024 Eindhoven at Fontys. The topic was "How to stay human in a technology-driven society". 
+
+Our product? A smart solution that encourages us to take a break from work and go for a short walk. It locks our Trello boards and prompts us with: "Walk 20 meters to the location shown in the image and scan the QR code to unlock this task!" 🌳📱
+
+This initiative underscores the importance of work-life balance, reminding us to step away from our desks occasionally and enjoy some fresh air and movement 🌿💻.
+The product consists of three parts: server, extention and a mobile app.
+
+# Server
+
+# Extention
+![ext 1](https://github.com/BRISINGR-01/Run-2-future/blob/main/images/1713623709172.jpeg)
+![ext 2](https://github.com/BRISINGR-01/Run-2-future/blob/main/images/1713623709503.jpeg)
+
+# App
+
+# Certificate
+![certificate](https://github.com/BRISINGR-01/Run-2-future/blob/main/images/1713623708890.jpeg)
