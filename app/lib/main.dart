@@ -2,6 +2,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:run_2_future_project/task.dart';
 
 import 'homemodel.dart';
 export 'main.dart';
@@ -73,11 +74,18 @@ class _HomePageWidgetState extends State<MainWidget> {
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
-                    onChanged: (input) => EasyDebounce.debounce(
+                    onFieldSubmitted: (input) => EasyDebounce.debounce(
                       '_model.textController',
                       Duration(milliseconds: 2000),
                       () async {
                         _model.URL = 'http://' + input + ":3000";
+                        _model.image = Image.network(
+                            _model.URL +
+                                '/img/?id=' +
+                                _model.selectedTask.toString(),
+                            height: 400,
+                            width: 600,
+                            fit: BoxFit.scaleDown);
                         setState(() {});
                       },
                     ),
@@ -85,6 +93,68 @@ class _HomePageWidgetState extends State<MainWidget> {
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: 'IP',
+                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                      hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      errorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedErrorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  child: TextFormField(
+                    controller: _model.textController,
+                    focusNode: _model.textFieldFocusNode,
+                    onFieldSubmitted: (input) => EasyDebounce.debounce(
+                      '_model.textController',
+                      Duration(milliseconds: 2000),
+                      () async {
+                        _model.selectedTask = int.parse(input);
+                        _model.image = Image.network(
+                            _model.URL +
+                                '/img/?id=' +
+                                _model.selectedTask.toString(),
+                            height: 400,
+                            width: 600,
+                            fit: BoxFit.scaleDown);
+                        setState(() {});
+                      },
+                    ),
+                    autofocus: true,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'TaskID',
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
                       hintStyle: FlutterFlowTheme.of(context).labelMedium,
                       enabledBorder: UnderlineInputBorder(
@@ -209,23 +279,7 @@ class _HomePageWidgetState extends State<MainWidget> {
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Hint'),
-                                      content: Text(
-                                          'The QR code is on the snack table.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Gotcha.'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
+                                _model.fetchHint(_model.selectedTask, context);
                               },
                               text: 'Help!',
                               options: FFButtonOptions(
@@ -258,7 +312,7 @@ class _HomePageWidgetState extends State<MainWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
-                          _model.lockTask(_model.qrResult);
+                          _model.lockTask(_model.selectedTask.toString());
                           setState(() {});
                         },
                         text: 'LOCK',

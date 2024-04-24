@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/roan/.pub-cache/hosted/pub.dev/rive_common-0.0.6/android/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/roan/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+      "-C",
+      "/Users/roan/.pub-cache/hosted/pub.dev/rive_common-0.0.6/android/.cxx/Debug/471v5d1b/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/roan/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+    "-C",
+    "/Users/roan/.pub-cache/hosted/pub.dev/rive_common-0.0.6/android/.cxx/Debug/471v5d1b/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "rive_text::@6890427a1f51a3e7e1df": {
+      "artifactName": "rive_text",
+      "abi": "x86",
+      "output": "/Users/roan/Desktop/run_2_future_project/app/build/rive_common/intermediates/cxx/Debug/471v5d1b/obj/x86/librive_text.so",
+      "runtimeFiles": []
+    }
+  }
+}

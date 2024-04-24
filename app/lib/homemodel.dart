@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
 import 'main.dart' show MainWidget;
@@ -9,15 +11,17 @@ class MainModel extends FlutterFlowModel<MainWidget> {
   final unfocusNode = FocusNode();
 
   // State field(s) for TextField widget.
-  final image = Image(
-      image: AssetImage('assets/snacktafel.png'),
-      height: 400,
-      width: 300,
-      fit: BoxFit.cover);
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   var URL = 'http://localhost:3000';
+  var image = Image(
+      image: AssetImage('assets/snacktafel.png'),
+      height: 400,
+      width: 600,
+      fit: BoxFit.scaleDown);
+  var selectedTask = 1;
   var qrResult = '1';
+  var hinttext = 'No hint available.';
 
   /// Initialization and disposal methods.
 
@@ -59,8 +63,27 @@ class MainModel extends FlutterFlowModel<MainWidget> {
         });
   }
 
-  Future<http.Response> fetchTask() {
-    return http.get(Uri.parse(URL + '/data/?id=' + qrResult));
+  Future<http.Response> fetchTask(id) {
+    return http.get(Uri.parse(URL + '/data/?id=' + id.toString()));
+  }
+
+  void fetchHint(id, context) {
+    fetchTask(id).then((value) => {
+          showDialog(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  title: Text('Hint'),
+                  content: Text(jsonDecode(value.body)['hint']),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: Text('Gotcha.'),
+                    ),
+                  ],
+                );
+              })
+        });
   }
 
   Future<http.Response> completeTask(String id) {
