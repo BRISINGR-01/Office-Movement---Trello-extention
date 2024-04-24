@@ -12,6 +12,8 @@ The server is written in Express and uses server sent event to maintain a bi-dir
 
 # Extention
 The extention works with [Trello](https://trello.com/). This is a "web-based, kanban-style, list-making application". It is primarily used by teams as a task delegation platform. As you can see in the screenshots, our project blocks random tasks based on a timer and encourages the user to walk to a specific location to unlock the app.
+
+
 ![ext 1](https://github.com/BRISINGR-01/Run-2-future/blob/main/images/1713623709172.jpeg)
 ![ext 2](https://github.com/BRISINGR-01/Run-2-future/blob/main/images/1713623709503.jpeg)
 
