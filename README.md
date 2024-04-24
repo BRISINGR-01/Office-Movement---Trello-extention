@@ -8,12 +8,15 @@ This initiative underscores the importance of work-life balance, reminding us to
 The product consists of three parts: server, extention and a mobile app.
 
 # Server
+The server is written in Express and uses server sent event to maintain a bi-directional connection with the extention.
 
 # Extention
+The extention works with [Trello](https://trello.com/). This is a "web-based, kanban-style, list-making application". It is primarily used by teams as a task delegation platform. As you can see in the screenshots, our project blocks random tasks based on a timer and encourages the user to walk to a specific location to unlock the app.
 ![ext 1](https://github.com/BRISINGR-01/Run-2-future/blob/main/images/1713623709172.jpeg)
 ![ext 2](https://github.com/BRISINGR-01/Run-2-future/blob/main/images/1713623709503.jpeg)
 
 # App
+The app is used to scan a QR code which unlocks the trello board.
 
 # Certificate
 ![certificate](https://github.com/BRISINGR-01/Run-2-future/blob/main/images/1713623708890.jpeg)
